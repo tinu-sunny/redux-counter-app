@@ -1,13 +1,22 @@
 import { Button, Navbar, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment, reset } from "./redux/slice";
+import { addValue, decrement, increment, reset } from "./redux/slice";
 
 function App() {
+  const [value,setValue]= useState()
  const dispatch = useDispatch()
   const {count} = useSelector((state)=>state.counter)
   console.log(count);
   
+
+  const handleincrement = ()=>{
+    console.log(value);
+    dispatch(addValue(Number(value)))  // dispatch(addvalue(+value))
+    setValue('')
+
+    
+  }
 
 
   return (
@@ -31,8 +40,8 @@ function App() {
     </div>
 
     <div className="flex justify-center items-center mt-5 w-full">
-      <TextInput type="text" placeholder="enter a number" className="w-80"></TextInput>
-      <Button>Add</Button>
+      <TextInput onChange={(e)=>setValue(e.target.value)} type="number" placeholder="enter a number" className="w-80" value={value}></TextInput>
+      <Button onClick={handleincrement}>Add</Button>
     </div>
  </div>
   

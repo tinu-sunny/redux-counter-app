@@ -16,6 +16,9 @@ reducers:{
 
     reset:(state)=>{
         state.count=0
+    },
+    addValue:(state,action)=>{
+        state.count+=action.payload
     }
     
 
@@ -24,5 +27,5 @@ reducers:{
 
 })
 
-export const {increment,decrement,reset}= slice.actions
+export const {increment,decrement,reset,addValue}= slice.actions
 export default slice.reducer
